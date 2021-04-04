@@ -23,29 +23,32 @@ public class RestAssuredExtension {
         Request = RestAssured.given().spec(requestSpec);
     }
 
-    public void GetOpsWithPathParameter(String url, Map<String, String> pathParams) {
+    public ResponseOptions<Response> GetOps(String url, Map<String, String> pathParams) {
         Request.pathParams(pathParams);
-        try {
-            Request.get(new URI(url));
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+        return Request.get(url);
     }
 
-    public ResponseOptions<Response> GetOps(String url) {
+    public ResponseOptions<Response> PostOps(String url, Map<String, String> pathParams,
+                                                                  Map<String, String> body) {
+
+        Request.pathParams(pathParams);
+        Request.body(body);
+        return Request.post(url);
+    }
+
+    public ResponseOptions<Response> PostOps(String url, Map<String, String> body) {
+
+        Request.body(body);
         try {
-            return Request.get(new URI(url));
+            return Request.post(new URI(url));
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public ResponseOptions<Response> PostOpsWithBodyAndPathParams(String url, Map<String, String> pathParams,
-                                                                  Map<String, String> body) {
-
+    public ResponseOptions<Response> DeleteOps(String url, Map<String, String> pathParams) {
         Request.pathParams(pathParams);
-        Request.body(body);
-        return Request.post(url);
+        return Request.delete(url);
     }
 }
