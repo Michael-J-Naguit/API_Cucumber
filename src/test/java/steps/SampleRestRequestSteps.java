@@ -69,7 +69,7 @@ public class SampleRestRequestSteps {
         // Convert Cucumber table to List
         List<List<String>> rows = table.asLists(String.class);
 
-        // Set Body
+        // Set Body (dynamically)
         HashMap<String, String> body = new HashMap<>();
         for (int i=0; i<(rows.get(0).size()); i++)
         {
@@ -96,5 +96,23 @@ public class SampleRestRequestSteps {
     @Then("I should not see the body with title as {string}")
     public void iShouldNotSeeTheBodyWithTitleAs(String title) {
         assertThat(_DataContext.response.getBody().jsonPath().get("name"), IsNot.not(title));
+    }
+
+    @And("I perform PUT operation for {string}")
+    public void iPerformPUTOperationFor(String url, DataTable table) {
+        // Convert Cucumber table to List
+        List<List<String>> rows = table.asLists(String.class);
+
+        // Set Path Parameter
+        HashMap<String, String> pathParams = new HashMap<>();
+        pathParams.put("id", rows.get(1).get(0));
+
+        // Set Body (hardcoded)
+        HashMap<String, String> body = new HashMap<>();
+        body.put("title", rows.get(1).get(1));
+        body.put("author", rows.get(1).get(2));
+
+        // Perform Put Operation
+        _DataContext.response = _DataContext.restAssuredExtension.PutOps(url, pathParams, body);
     }
 }

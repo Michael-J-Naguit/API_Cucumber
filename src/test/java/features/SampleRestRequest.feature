@@ -1,13 +1,13 @@
 Feature:
   Verify different Rest API request operations
 
-  Scenario: Verify the author of post id 2
+  Scenario: Verify GET operation of post id 2
     Given I perform GET operation for "/posts/{id}"
       |id|
       |2 |
     Then I should see the author name as "MikeN"
 
-  Scenario: Verify Post operation for Profile
+  Scenario: Verify POST operation for Profile
     Given I perform POST operation for "/posts/{profileNo}/profile", "2" with body
       |name|role|
       |Mike|QA  |
@@ -24,3 +24,15 @@ Feature:
       |id|
       |5 |
     Then I should not see the body with title as "Delete Test"
+
+  Scenario: Verify PUT operation after POST
+    Given I perform POST operation for "/posts/", with body
+      |id |title      |author|
+      |8  |PUT Test   |MJN   |
+    And I perform PUT operation for "/posts/{id}"
+      |id|title      |author|
+      |5 |Done       |MJN   |
+    And I perform GET operation for "/posts/{id}"
+      |id|
+      |5 |
+    Then I should not see the body with title as "PUT Test"

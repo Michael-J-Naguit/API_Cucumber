@@ -51,4 +51,10 @@ public class RestAssuredExtension {
         Request.pathParams(pathParams);
         return Request.delete(url);
     }
+
+    public ResponseOptions<Response> PutOps(String url, Map<String, String> pathParams, Map<String, String> body) {
+        Request.pathParams(pathParams);
+        Request.body(body);
+        return Request.put(url);
+    }
 }
