@@ -27,7 +27,7 @@ public class CommonSteps {
 
     @After
     public void WriteJSONResponseToFile() throws IOException {
-        // Remove Special Characters from Scenario Name and replace spaces with "_"
+        // Remove Special Characters from Scenario Name
         String scenarioName= _DataContext.scenario;
         scenarioName = scenarioName.replaceAll("[^a-zA-Z0-9]", "");
 

@@ -3,6 +3,7 @@ package tools;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
+import io.restassured.http.Header;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseOptions;
 import io.restassured.specification.RequestSpecification;
@@ -25,6 +26,11 @@ public class RestAssuredExtension {
 
     public ResponseOptions<Response> GetOps(String url, Map<String, String> pathParams) {
         Request.pathParams(pathParams);
+        return Request.get(url);
+    }
+
+    public ResponseOptions<Response> GetOps(String url, String token) {
+        Request.header(new Header("Authorization", "Bearer " + token));
         return Request.get(url);
     }
 
