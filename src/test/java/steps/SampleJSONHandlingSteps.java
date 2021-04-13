@@ -1,6 +1,7 @@
 package steps;
 
 import contexts.DataContext;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -37,6 +38,11 @@ public class SampleJSONHandlingSteps {
         _DataContext.tempResponse = _DataContext.jsonArray.getJSONObject(index).getString("name");
         assertThat(_DataContext.tempResponse, equalTo(name));
 
-        ObjectMapper objectMapper = new ObjectMapper();
+        //ObjectMapper objectMapper = new ObjectMapper();
+    }
+
+    @And("I should see JSON array length is {int}")
+    public void iShouldSeeJSONArrayLengthIs(int length) {
+        assertThat(_DataContext.jsonArray.length(), equalTo(length));
     }
 }
