@@ -31,16 +31,19 @@ public class CommonSteps {
         String scenarioName= _DataContext.scenario;
         scenarioName = scenarioName.replaceAll("[^a-zA-Z0-9]", "");
 
-        // Getting response as a string and writing in to a file
-        String responseAsString = _DataContext.response.body().asString();
+        String responseAsString;
+        if (_DataContext.response != null) {
+            // Getting response as a string and writing in to a file
+            responseAsString = _DataContext.response.body().asString();
 
-        // Converting in to byte array before writing
-        byte[] responseAsStringByte = responseAsString.getBytes();
+            // Converting in to byte array before writing
+            byte[] responseAsStringByte = responseAsString.getBytes();
 
-        // Creating a target file
-        File targetFileForString = new File("src/main/resources/"+ scenarioName + ".json");
+            // Creating a target file
+            File targetFileForString = new File("src/main/resources/" + scenarioName + ".json");
 
-        // Writing into files
-        Files.write(responseAsStringByte, targetFileForString);
+            // Writing into files
+            Files.write(responseAsStringByte, targetFileForString);
+        }
     }
 }

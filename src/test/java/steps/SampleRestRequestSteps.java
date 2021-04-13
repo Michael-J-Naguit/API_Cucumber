@@ -5,6 +5,7 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.hamcrest.core.IsNot;
 
 import java.util.HashMap;
@@ -115,4 +116,5 @@ public class SampleRestRequestSteps {
         // Perform Put Operation
         _DataContext.response = _DataContext.restAssuredExtension.PutOps(url, pathParams, body);
     }
+
 }
