@@ -7,4 +7,6 @@ Feature:
   Then I should see index 0 name is "Java"
   And I should see JSON array length is 3
 
-  #Scenario: Deserialize JSON string by Jackson ObjectMapper
+  Scenario: Deserialize JSON file by org.json
+    Given I have a JSON from a file
+    Then I should see "pageName" is "Homepage"

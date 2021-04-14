@@ -1,5 +1,6 @@
 Feature:
   Verify different Rest API request operations
+  #CMD: json-server --watch C:\json\db.json
 
   Scenario: Verify GET operation of post id 2
     Given I perform GET operation for "/posts/{id}"

@@ -40,7 +40,7 @@ public class CommonSteps {
             byte[] responseAsStringByte = responseAsString.getBytes();
 
             // Creating a target file
-            File targetFileForString = new File("src/main/resources/" + scenarioName + ".json");
+            File targetFileForString = new File("src/main/resources/testResponse/" + scenarioName + ".json");
 
             // Writing into files
             Files.write(responseAsStringByte, targetFileForString);
