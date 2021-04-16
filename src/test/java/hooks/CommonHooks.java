@@ -1,5 +1,6 @@
 package steps;
 
+import Models.myFile_model;
 import com.google.common.io.Files;
 import contexts.DataContext;
 import io.cucumber.java.After;
