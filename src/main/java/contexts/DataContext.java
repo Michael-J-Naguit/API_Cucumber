@@ -1,5 +1,6 @@
 package contexts;
 
+import models.MyFile_model;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseOptions;
 import org.json.JSONArray;
@@ -15,4 +16,5 @@ public class DataContext {
     public JSONArray jsonArray;
     public JSONObject jsonObject;
     public String resource;
+    public MyFile_model myFile_model;
 }

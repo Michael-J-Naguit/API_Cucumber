@@ -1,6 +1,5 @@
-package steps;
+package hooks;
 
-import Models.myFile_model;
 import com.google.common.io.Files;
 import contexts.DataContext;
 import io.cucumber.java.After;
@@ -12,11 +11,11 @@ import tools.RestAssuredExtension;
 import java.io.File;
 import java.io.IOException;
 
-public class CommonSteps {
+public class CommonHooks {
 
     private DataContext _DataContext;
 
-    public CommonSteps(DataContext dataContext) {
+    public CommonHooks(DataContext dataContext) {
         _DataContext = dataContext;
     }
 

@@ -1,5 +1,8 @@
 package steps;
 
+import io.cucumber.java.sl.In;
+import models.MyFile_model;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import contexts.DataContext;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -11,6 +14,8 @@ import org.json.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONTokener;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -40,8 +45,6 @@ public class SampleJSONHandlingSteps {
     public void iShouldSeeIndexNameIs(int index, String name) {
         _DataContext.tempResponse = _DataContext.jsonArray.getJSONObject(index).getString("name");
         assertThat(_DataContext.tempResponse, equalTo(name));
-
-        ObjectMapper objectMapper = new ObjectMapper();
     }
 
     @And("I should see JSON array length is {int}")
@@ -49,8 +52,8 @@ public class SampleJSONHandlingSteps {
         assertThat(_DataContext.jsonArray.length(), equalTo(length));
     }
 
-    @Given("I have a JSON from a file")
-    public void iHaveAJSONFromAFile() {
+    @Given("I have a JSON from a file converted into Input Stream")
+    public void iHaveAJSONFromAFileConvertedIntoInputStream() {
         _DataContext.resource = "/testData/pageInfo.json";
         InputStream is = SampleJSONHandlingSteps.class.getResourceAsStream(_DataContext.resource);
         if (is == null) {
@@ -63,5 +66,17 @@ public class SampleJSONHandlingSteps {
     @Then("I should see {string} is {string}")
     public void iShouldSeeIs(String name, String value) {
         assertThat(_DataContext.jsonObject.getJSONObject("pageInfo").getString(name), equalTo(value));
+    }
+
+    @Given("I have a JSON from a file converted into String")
+    public void iHaveAJSONFromAFileConvertedIntoString() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        _DataContext.myFile_model = objectMapper.readValue(new File("src/main/resources/testData/myFile.json"), MyFile_model.class);
+    }
+
+    @Then("I should see {string} is {string} by using Jackson Mapper")
+    public void iShouldSeeIsByUsingJacksonMapper(String name, String value) {
+        assertThat(Integer.toString(_DataContext.myFile_model.getAge()), equalTo(value));
     }
 }
