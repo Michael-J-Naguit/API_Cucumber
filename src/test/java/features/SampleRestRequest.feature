@@ -1,3 +1,4 @@
+@withResponseBody
 Feature:
   Verify different Rest API request operations
   #CMD: json-server --watch C:\json\db.json
