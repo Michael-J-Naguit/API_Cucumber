@@ -1,4 +1,4 @@
-package steps;
+package hooks;
 
 import com.google.common.io.Files;
 import contexts.DataContext;
@@ -10,11 +10,11 @@ import tools.RestAssuredExtension;
 import java.io.File;
 import java.io.IOException;
 
-public class Hooks {
+public class CommonHooks {
 
     private DataContext _DataContext;
 
-    public Hooks(DataContext dataContext) {
+    public CommonHooks(DataContext dataContext) {
         _DataContext = dataContext;
     }
 
@@ -41,10 +41,5 @@ public class Hooks {
 
         // Writing into files
         Files.write(responseAsStringByte, targetFileForString);
-    }
-
-    @Before (value="@jackson")
-    public void JacksonTestSetup(){
-        var test = "sample";
     }
 }
