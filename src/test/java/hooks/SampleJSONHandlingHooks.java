@@ -13,6 +13,6 @@ public class SampleJSONHandlingHooks {
 
     @Before (value="@jackson")
     public void JacksonTestSetup() {
-        var test = "sample";
+        String test = "sample";
     }
 }
