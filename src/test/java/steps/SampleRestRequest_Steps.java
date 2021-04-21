@@ -7,12 +7,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.hamcrest.core.IsNot;
+import org.junit.Assert;
 
 import java.util.HashMap;
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.*;
 
 public class SampleRestRequest_Steps {
 
@@ -36,7 +36,8 @@ public class SampleRestRequest_Steps {
 
     @Then("I should see the author name as {string}")
     public void iShouldSeeTheAuthorNameAs(String author) {
-        assertThat(_DataContext.response.getBody().jsonPath().get("author"), equalTo(author));
+        assertEquals(_DataContext.response.getBody().jsonPath().get("author"), author);
+
         // If Model is defined for Posts (restAssured deserialization process)
         // response.getBody().as(Posts[].class);
     }
@@ -64,7 +65,7 @@ public class SampleRestRequest_Steps {
 
     @Then("I should see the body has name as {string}")
     public void iShouldSeeTheBodyHasNameAs(String name) {
-        assertThat(_DataContext.response.getBody().jsonPath().get("name"), equalTo(name));
+        assertEquals(_DataContext.response.getBody().jsonPath().get("name"), name);
     }
 
     @Given("I perform POST operation for {string}, with body")
@@ -98,7 +99,7 @@ public class SampleRestRequest_Steps {
 
     @Then("I should not see the body with title as {string}")
     public void iShouldNotSeeTheBodyWithTitleAs(String title) {
-        assertThat(_DataContext.response.getBody().jsonPath().get("name"), IsNot.not(title));
+        assertNotEquals(_DataContext.response.getBody().jsonPath().get("name"), title);
     }
 
     @And("I perform PUT operation for {string}")

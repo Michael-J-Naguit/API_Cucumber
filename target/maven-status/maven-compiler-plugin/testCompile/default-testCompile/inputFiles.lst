@@ -1,5 +1,5 @@
 C:\IdeaProjects\API_Cucumber\src\test\java\testrunners\TestRunner.java
-C:\IdeaProjects\API_Cucumber\src\test\java\hooks\CommonHooks.java
-C:\IdeaProjects\API_Cucumber\src\test\java\steps\SampleJSONHandlingSteps.java
-C:\IdeaProjects\API_Cucumber\src\test\java\hooks\SampleJSONHandlingHooks.java
-C:\IdeaProjects\API_Cucumber\src\test\java\steps\SampleRestRequestSteps.java
+C:\IdeaProjects\API_Cucumber\src\test\java\hooks\Common_Hooks.java
+C:\IdeaProjects\API_Cucumber\src\test\java\hooks\SampleJSONHandling_Hooks.java
+C:\IdeaProjects\API_Cucumber\src\test\java\steps\SampleJSONHandling_Steps.java
+C:\IdeaProjects\API_Cucumber\src\test\java\steps\SampleRestRequest_Steps.java

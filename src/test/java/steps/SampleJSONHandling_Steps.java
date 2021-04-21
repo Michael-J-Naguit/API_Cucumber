@@ -17,8 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.*;
 
 public class SampleJSONHandling_Steps {
 
@@ -43,12 +42,12 @@ public class SampleJSONHandling_Steps {
     @Then("I should see index {int} name is {string}")
     public void iShouldSeeIndexNameIs(int index, String name) {
         _DataContext.tempResponse = _DataContext.jsonArray.getJSONObject(index).getString("name");
-        assertThat(_DataContext.tempResponse, equalTo(name));
+        assertEquals(_DataContext.tempResponse, name);
     }
 
     @And("I should see JSON array length is {int}")
     public void iShouldSeeJSONArrayLengthIs(int length) {
-        assertThat(_DataContext.jsonArray.length(), equalTo(length));
+        assertEquals(_DataContext.jsonArray.length(), length);
     }
 
     @Given("I have a JSON from a file converted into Input Stream")
@@ -64,7 +63,7 @@ public class SampleJSONHandling_Steps {
 
     @Then("I should see {string} is {string}")
     public void iShouldSeeIs(String name, String value) {
-        assertThat(_DataContext.jsonObject.getJSONObject("pageInfo").getString(name), equalTo(value));
+        assertEquals(_DataContext.jsonObject.getJSONObject("pageInfo").getString(name), value);
     }
 
     @Given("I have a JSON from a file converted into String")
@@ -76,6 +75,6 @@ public class SampleJSONHandling_Steps {
 
     @Then("I should see {string} is {string} by using Jackson Mapper")
     public void iShouldSeeIsByUsingJacksonMapper(String name, String value) {
-        assertThat(Integer.toString(_DataContext.myFile_model.getAge()), equalTo(value));
+        assertEquals(Integer.toString(_DataContext.myFile_model.getAge()), value);
     }
 }

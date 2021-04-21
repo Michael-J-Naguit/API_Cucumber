@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: testrunners.TestRunner
+Test set: EMPTY_NAME #2
 -------------------------------------------------------------------------------
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.373 s - in testrunners.TestRunner
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.736 s - in EMPTY_NAME #2
