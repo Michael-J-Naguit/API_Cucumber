@@ -1,0 +1,33 @@
+"location": [
+	{
+		"id": 1,
+		"city": "Manila",
+		"country": "Philippines",
+		"address": [
+			{
+				"street": "1st street",
+				"flat_no": "18A",
+				"pincode": 6100,
+				"type": "primary"
+			},
+			{
+				"street": "1st street",
+				"flat_no": "18A",
+				"pincode": 6100,
+				"type": "secondary" 
+			}
+		]
+	},
+	{
+		"id": 2,
+		"city": "Auckland",
+		"country": "New Zealand",
+		"address": [
+			{
+				"street": "Queen Street",
+				"flat_no": "111",
+				"pincode": 0992
+			}
+		]
+	}
+]
