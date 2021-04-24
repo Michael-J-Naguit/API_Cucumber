@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="testrunners.TestRunner" time="1.958" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="testrunners.TestRunner" time="1.988" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_281\jre\bin"/>
@@ -65,11 +65,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="EMPTY_NAME #1" name="Deserialize JSON string by org.json" time="0.546"/>
+  <testcase classname="EMPTY_NAME #1" name="Deserialize JSON string by org.json" time="0.55"/>
   <testcase classname="EMPTY_NAME #1" name="Deserialize JSON file by org.json" time="0.007"/>
-  <testcase classname="EMPTY_NAME #1" name="Deserialize JSON file by Jackson API" time="0.149"/>
-  <testcase classname="EMPTY_NAME #2" name="Verify GET operation of post id 2" time="0.939"/>
-  <testcase classname="EMPTY_NAME #2" name="Verify POST operation for Profile" time="0.1"/>
-  <testcase classname="EMPTY_NAME #2" name="Verify DELETE operation after POST" time="0.106"/>
-  <testcase classname="EMPTY_NAME #2" name="Verify PUT operation after POST" time="0.111"/>
+  <testcase classname="EMPTY_NAME #1" name="Deserialize JSON file by Jackson API" time="0.157"/>
+  <testcase classname="EMPTY_NAME #2" name="Verify GET operation of post id 2" time="0.957"/>
+  <testcase classname="EMPTY_NAME #2" name="Verify POST operation for Profile" time="0.099"/>
+  <testcase classname="EMPTY_NAME #2" name="Verify DELETE operation after POST" time="0.108"/>
+  <testcase classname="EMPTY_NAME #2" name="Verify PUT operation after POST" time="0.11"/>
 </testsuite>

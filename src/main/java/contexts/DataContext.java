@@ -1,5 +1,6 @@
 package contexts;
 
+import models.Location_Model;
 import models.MyFile_Model;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseOptions;
@@ -16,5 +17,6 @@ public class DataContext {
     public JSONArray jsonArray;
     public JSONObject jsonObject;
     public String resource;
-    public MyFile_Model myFile_model;
+    public MyFile_Model myFile_pojo;
+    public Location_Model[] location_pojo;
 }

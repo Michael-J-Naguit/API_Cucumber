@@ -25,12 +25,18 @@ public class RestAssuredExtension {
     }
 
     public ResponseOptions<Response> GetOps(String url, Map<String, String> pathParams) {
-        Request.pathParams(pathParams);
+        Request.pathParams(pathParams); // /{id}
         return Request.get(url);
     }
 
     public ResponseOptions<Response> GetOps(String url, String token) {
         Request.header(new Header("Authorization", "Bearer " + token));
+        return Request.get(url);
+    }
+
+    public ResponseOptions<Response> GetOps(String url, Map<String, String> queryParams, String token) {
+        Request.header(new Header("Authorization", "Bearer " + token));
+        Request.queryParams(queryParams); // ?id=1
         return Request.get(url);
     }
 

@@ -1,5 +1,7 @@
 package steps;
 
+import models.Address_Model;
+import models.Location_Model;
 import models.MyFile_Model;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import contexts.DataContext;
@@ -16,6 +18,7 @@ import org.json.JSONTokener;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 
 import static org.junit.Assert.*;
 
@@ -66,15 +69,36 @@ public class SampleJSONHandling_Steps {
         assertEquals(_DataContext.jsonObject.getJSONObject("pageInfo").getString(name), value);
     }
 
-    @Given("I have a JSON from a file converted into String")
-    public void iHaveAJSONFromAFileConvertedIntoString() throws IOException {
+    @Given("I have a JSON from a file converted into POJO {string}")
+    public void iHaveAJSONFromAFileConvertedIntoString(String fileName) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        _DataContext.myFile_model = objectMapper.readValue(new File("src/main/resources/testData/myFile.json"), MyFile_Model.class);
+        if (fileName.contains("myFile"))
+            _DataContext.myFile_pojo = objectMapper.readValue(new File("src/main/resources/testData/"+fileName), MyFile_Model.class);
+        else if (fileName.contains("location"))
+            _DataContext.location_pojo = objectMapper.readValue(new File("src/main/resources/testData/"+fileName), Location_Model[].class);
     }
 
     @Then("I should see {string} is {string} by using Jackson Mapper")
     public void iShouldSeeIsByUsingJacksonMapper(String name, String value) {
-        assertEquals(Integer.toString(_DataContext.myFile_model.getAge()), value);
+        String expectedValue = "";
+        if (name.equalsIgnoreCase("age"))
+            expectedValue = Integer.toString(_DataContext.myFile_pojo.getAge());
+        assertEquals("Message if Fail", expectedValue, value);
+    }
+
+    @Then("Verify values from JSON Array")
+    public void verifyValuesFromJSONArray() {
+        Address_Model firstAddressPrimary = _DataContext.location_pojo[0].getAddress().stream().filter(x -> x.getType()
+                .equalsIgnoreCase("primary")).findFirst().orElse(null);
+
+        Address_Model secondAddressPrimary = _DataContext.location_pojo[1].getAddress().stream().filter(x -> x.getType()
+                .equalsIgnoreCase("primary")).findFirst().orElse(null);
+
+        String firstAddressCountry = _DataContext.location_pojo[0].getCountry();
+
+        assertEquals("18A", firstAddressPrimary.getFlat_no());
+        assertEquals("111", secondAddressPrimary.getFlat_no());
+        assertEquals("Philippines", firstAddressCountry);
     }
 }

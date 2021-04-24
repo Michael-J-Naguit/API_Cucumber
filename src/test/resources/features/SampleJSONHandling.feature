@@ -13,5 +13,9 @@ Feature:
 
   @jackson
   Scenario: Deserialize JSON file by Jackson API
-    Given I have a JSON from a file converted into String
-    Then I should see "age" is "30" by using Jackson Mapper
+    Given I have a JSON from a file converted into POJO "myFile.json"
+    Then I should see "AGe" is "30" by using Jackson Mapper
+
+  Scenario: Deserialize Complex JSON file by Jackson API
+    Given I have a JSON from a file converted into POJO "location.json"
+    Then Verify values from JSON Array

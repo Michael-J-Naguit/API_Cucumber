@@ -75,9 +75,9 @@ public class SampleRestRequest_Steps {
 
         // Set Body (dynamically)
         HashMap<String, String> body = new HashMap<>();
-        for (int i=0; i<(rows.get(0).size()); i++)
+        for (int i=0; i<(rows.get(0).size()); i++) // Iterate through Header Size
         {
-            body.put(rows.get(0).get(i), rows.get(1).get(i));
+            body.put(rows.get(0).get(i), rows.get(1).get(i)); // Get value from each row and each column
         }
 
         // Perform Post Operation
