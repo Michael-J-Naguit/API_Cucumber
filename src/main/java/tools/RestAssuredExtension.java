@@ -16,6 +16,9 @@ public class RestAssuredExtension {
 
     public static RequestSpecification Request;
 
+    /**
+     * Build Initial Rest Request
+     */
     public RestAssuredExtension() {
         RequestSpecBuilder builder = new RequestSpecBuilder();
         builder.setBaseUri("http://localhost:3000");

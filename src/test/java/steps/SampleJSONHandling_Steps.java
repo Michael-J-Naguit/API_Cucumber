@@ -18,7 +18,6 @@ import org.json.JSONTokener;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Locale;
 
 import static org.junit.Assert.*;
 
