@@ -18,23 +18,26 @@ Feature:
   Scenario: Verify DELETE operation after POST
     Given I perform POST operation for "/posts/", with body
       |id |title      |author|
-      |5  |Delete Test|MJN   |
+      |10  |Delete Test|MJN   |
     And I perform DELETE operation for "/posts/{id}"
       |id|
-      |5 |
+      |10 |
     And I perform GET operation for "/posts/{id}"
       |id|
-      |5 |
+      |10|
     Then I should not see the body with title as "Delete Test"
 
   Scenario: Verify PUT operation after POST
     Given I perform POST operation for "/posts/", with body
       |id |title      |author|
-      |8  |PUT Test   |MJN   |
+      |9  |PUT Test   |MJN   |
     And I perform PUT operation for "/posts/{id}"
       |id|title      |author|
-      |5 |Done       |MJN   |
+      |9 |Done       |MJN   |
     And I perform GET operation for "/posts/{id}"
       |id|
-      |5 |
+      |9 |
     Then I should not see the body with title as "PUT Test"
+    And I perform DELETE operation for "/posts/{id}"
+      |id|
+      |9 |

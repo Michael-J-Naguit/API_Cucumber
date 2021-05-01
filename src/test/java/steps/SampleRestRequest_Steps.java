@@ -8,6 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.hamcrest.core.IsNot;
 import org.junit.Assert;
+import tools.RestAssuredExtV2;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +24,7 @@ public class SampleRestRequest_Steps {
     }
 
     @Given("I perform GET operation for {string}")
-    public void iPerformGETOperationFor(String url, DataTable table) {
+    public void iPerformGETOperationFor(String uri, DataTable table) {
         // Convert Cucumber table to List
         List<List<String>> rows = table.asLists(String.class);
 
@@ -31,7 +32,9 @@ public class SampleRestRequest_Steps {
         HashMap<String, String> pathParams = new HashMap<>();
         pathParams.put("id", rows.get(1).get(0));
 
-        _DataContext.response = _DataContext.restAssuredExtension.GetOps(url, pathParams);
+        // Using RestAssuredExtV2
+        RestAssuredExtV2 restAssuredExtV2 = new RestAssuredExtV2(uri, "GET");
+        _DataContext.response = restAssuredExtV2.ExecuteWithPathParams(pathParams);
     }
 
     @Then("I should see the author name as {string}")
