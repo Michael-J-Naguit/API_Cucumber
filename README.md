@@ -10,3 +10,4 @@ Tools used:
 - RestAssured
 - JUnit
 - Maven
+- Lombok
