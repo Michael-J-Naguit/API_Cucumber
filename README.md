@@ -11,3 +11,7 @@ Tools used:
 - JUnit
 - Maven
 - Lombok
+
+
+on root folder (disable proxy if needed)
+mvn clean install -U 
