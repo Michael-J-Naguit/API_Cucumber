@@ -23,7 +23,6 @@ public class RestAssuredExtV2 {
     private ResponseOptions<Response> ExecuteAPI() {
 
         RequestSpecification requestSpec = builder.build();
-        Response response;
         RequestSpecification request = RestAssured.given();
         request.contentType(ContentType.JSON);
         request.spec(requestSpec);
