@@ -18,4 +18,5 @@ Feature:
 
   Scenario: Deserialize Complex JSON file by Jackson API
     Given I have a JSON from a file converted into POJO "location.json"
+    And I create a json array
     Then Verify values from JSON Array
