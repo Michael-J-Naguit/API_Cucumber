@@ -41,5 +41,27 @@ public class Common_Hooks {
 
         // Writing into files
         Files.write(responseAsStringByte, targetFileForString);
+        
+        /*
+        import java.io.File;
+        import java.io.FileOutputStream;
+        
+        ObjectMapper objectMapper = new ObjectMapper();
+        if (_DataContext.requestBody != null) {
+            JsonNode jsonNode = objectMapper.readTree(_DataContext.requestBody);
+            String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonNode);
+            byte[] requestAsStringByte = json.getBytes();
+            FileOutputStream stream = new FileOutputStream("target/testArtifacts/" + _DataContext.scenario + "/" + _DataContext.uriTitle + "_request.json");
+            stream.write(requestAsStringByte);
+        }
+
+        if (_DataContext.response != null) {
+            JsonNode jsonNode = objectMapper.readTree(_DataContext.requestBody);
+            String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonNode);
+            byte[] responseAsStringByte = json.getBytes();
+            FileOutputStream stream = new FileOutputStream("target/testArtifacts/" + _DataContext.scenario + "/" + _DataContext.uriTitle + "_response.json");
+            stream.write(responseAsStringByte);
+        }
+        */
     }
 }
